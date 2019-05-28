@@ -1,3 +1,5 @@
+#include <sdktools>
+
 #define MAX_INTEGER_STRING_LENGTH 16
 #define MAX_FLOAT_STRING_LENGTH 32
 #define AUTH_LENGTH 64
@@ -153,6 +155,7 @@ stock bool Record(const char[] demoName) {
 
 stock void StopRecording() {
   ServerCommand("tv_stoprecord");
+  LogDebug("Calling Get5_OnDemoFinished(file=%s)", g_DemoFileName);
   Call_StartForward(g_OnDemoFinished);
   Call_PushString(g_DemoFileName);
   Call_Finish();
